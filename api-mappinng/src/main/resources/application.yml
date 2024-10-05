@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: api-mappig
+  data:
+    mongodb:
+      username: root
+      password: root
+      host: localhost
+      port: 27017
+      database: mapping_db
+      authentication-database: admin
+server:
+port: 8090

@@ -1,0 +1,19 @@
+services:
+  mongodb:
+    image: mongo
+    container_name: ms_mongo_db
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo:/data
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+
+networks:
+  microservices-net:
+    driver: bridge
+
+volumes:
+  mongo:
