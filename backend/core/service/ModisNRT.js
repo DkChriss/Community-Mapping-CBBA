@@ -64,9 +64,11 @@ class ModisNRTService {
         }
     }
 
-    static async changeStatus(id) {
+    static async updateStatus(id) {
         try {
-            const record = await modisNRT.findByIdAndUpdate(id, { status: false })
+            const record = await modisNRT.findById(id);
+            record.status = false;
+            record.save();
             return record;
         } catch(error) {
             console.log(error)

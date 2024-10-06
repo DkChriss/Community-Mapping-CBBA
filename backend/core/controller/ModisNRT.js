@@ -21,7 +21,7 @@ class ModisNRTController {
 
     static async store(req, res) {
      try {
-        const record = service.store(req.body);
+        const record = await service.store(req.body);
         return response.successResponse(
             res,
             201,
@@ -49,6 +49,7 @@ class ModisNRTController {
             console.error(error)
         }
     }
+
 }
 
 module.exports = ModisNRTController
