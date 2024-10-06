@@ -35,10 +35,10 @@ else:
             if req.status_code == 200:
                 res = req.json()                
                 if 'address' in res:
-                    df.at[index, "address"] = res["address"].get("road", "Unknown")
+                    df.at[index, "address"] = res["address"]
                 else:
                     print(f"Dirección no encontrada para lat: {lat}, long: {long}")
-                    df.at[index,"address"] = {}
+                    df.at[index, "address"] = None                
                 
                 record = df.iloc[index].to_dict()
                 record['brightness_c'] = df.at[index, 'brightness_c']
