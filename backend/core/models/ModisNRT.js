@@ -4,7 +4,8 @@ const schema = new mongoose.Schema({
     country_id: {type: String, required: true},
     latitude: {type: String, required: true},
     longitude: {type: String, required: true},
-    brightness: {type: String, required: true},
+    brightness: {type: Number, required: true},
+    brightness_c: {type: Number},
     scan: {type: String, required: true},
     track: {type: String, required: true},
     acq_date: {type: String, required: true},
@@ -15,7 +16,8 @@ const schema = new mongoose.Schema({
     version: {type: String, required: true},
     bright_t31: {type: String, required: true},
     frp: {type: String, required: true},
-    daynight: {type: String, required: true}
+    daynight: {type: String, required: true},
+    status:{type: Boolean, default: true}
 
 });
 

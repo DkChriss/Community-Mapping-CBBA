@@ -32,6 +32,23 @@ class ModisNRTController {
         console.error(error);
      }   
     }
+
+    static async updateStatus(req,res) {
+        try {
+            
+            const record = await service.updateStatus(req.params.id);
+
+            return response.successResponse(
+                res,
+                200,
+                "The record has been updated",
+                record
+            );
+
+        } catch(error) {
+            console.error(error)
+        }
+    }
 }
 
 module.exports = ModisNRTController

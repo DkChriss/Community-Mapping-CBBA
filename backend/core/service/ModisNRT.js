@@ -16,6 +16,7 @@ class ModisNRTService {
             .pipe(csv())
             .on('data', async (row) => {
                 const record = new modisNRT(row);
+                record.brightness_c = record.brightness - 273.15;
                 try {
                     await record.save();
                 } catch (error) {
@@ -59,6 +60,15 @@ class ModisNRTService {
 
         } catch(error) {
             console.error(error);
+        }
+    }
+
+    static async changeStatus(id) {
+        try {
+            const record = await modisNRT.findByIdAndUpdate(id, { status: false })
+            return record;
+        } catch(error) {
+            console.log(error)
         }
     }
 }
