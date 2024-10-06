@@ -1,2 +1,376 @@
+<!--== Loader Start ==-->
+<!-- <div id="loader-overlay">
+  <div class="loader">
+    <div class="spinner">
+    	<svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+    		<circle class="length" fill="none" stroke-width="8" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+    	</svg>
+    	<svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+    		<circle fill="none" stroke-width="8" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+    	</svg>
+    	<svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+    		<circle fill="none" stroke-width="8" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+    	</svg>
+    	<svg viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+    		<circle fill="none" stroke-width="8" stroke-linecap="round" cx="33" cy="33" r="28"></circle>
+    	</svg>
+    </div>
+  </div>
+</div> -->
+<!--== Loader End ==-->
 
-<router-outlet></router-outlet>
+<!--== Wrapper Start ==-->
+<div class="wrapper">
+
+  <!--== Header Start ==-->
+  <nav class="navbar navbar-default navbar-sidebar bootsnav no-full">
+
+    <div class="container">
+
+      <!--== Start Header Navigation ==-->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> <i class="tr-icon ion-android-menu"></i> </button>
+        <div class="logo"> <a href="index.html">
+          <img style="max-height: 120px;" class="logo logo-scrolled" src="assets/images/logo-fire.png" alt=""> </a> </div>
+      </div>
+      <!--== End Header Navigation ==-->
+
+      <!--== Collect the nav links, forms, and other content for toggling ==-->
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        <ul class="nav navbar-nav">
+          <li><a class="page-scroll" href="#home">Home</a></li>
+          <li><a class="page-scroll" href="#feature">Mapa</a></li>
+          <li><a class="page-scroll" href="#team">Team</a></li>
+
+          <li><a class="page-scroll" href="#contact">Contact</a></li>
+        </ul>
+        <!-- Start Share -->
+        <div class="share social-icons-style-09 display-none-md">
+          <ul class="sm-icon">
+            <!-- <li><a class="facebook" href="#."><i class="icofont icofont-social-facebook"></i></a></li>
+            <li><a class="twitter" href="#."><i class="icofont icofont-social-twitter"></i></a></li>
+            <li><a class="linkedin" href="#."><i class="icofont icofont-social-linkedin"></i></a></li>
+            <li><a class="youtube" href="#."><i class="icofont icofont-social-youtube"></i></a></li> -->
+          </ul>
+        </div>
+        <!-- End Share -->
+
+      </div>
+      <!--== /.navbar-collapse ==-->
+    </div>
+  </nav>
+  <!--== Header End ==-->
+
+  <!--== Hero Slider Start ==-->
+
+  <section class="home-slider no-direction" id="home">
+    <div class="default-slider slick">
+      <div class="slide">
+        <div class="slide-img parallax-effect" style="background:url(assets/images/background-nasa.jpg) center center / cover scroll no-repeat;"></div>
+        <div class="hero-text-wrap">
+          <div class="hero-text white-color">
+            <div class="container">
+              <div class="white-color xs-text-center">
+                <h4 class="white-color raleway-font font-300">Bolivia Fire Map</h4>
+                <h1 class="white-color font-700 text-uppercase font-100px line-height-90 xs-font-40px xs-line-height-50 sm-font-60px sm-line-height-60">Bolivia<br> Mapa de Incendios</h1>
+                <p class="mt-30"><a href="#feature" class="btn btn-light-outline btn-lg btn-square">VER</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--== Hero Slider End ==-->
+
+  <!--== Who We Are Start ==-->
+  <section class="white-bg pb-80" id="feature">
+    <div class="container">
+      <div class="row">
+        <div>MAPA AQUI</div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </section>
+  <!--== Who We Are End ==-->
+
+
+  <!--== Team Start ==-->
+  <section class="grey-bg" id="team">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 centerize-col text-center">
+          <div class="section-title">
+            <h2 class="raleway-font default-color">Meet Ninjas</h2>
+            <h1 class="raleway-font">Our Creative Team</h1>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
+        </div>
+      </div>
+
+      <div class="row mt-50">
+        <div class="team-slider slick">
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="team-member">
+              <div class="team-thumb">
+                <div class="thumb-overlay"></div>
+                <img src="assets/images/team/team-1.jpg" alt="">
+                <div class="member-info text-center default-bg">
+                  <h3>Tom Bills</h3>
+                  <span class="title">Web Designer</span>
+                  <ul class="social-link list-inline">
+                    <li><a href="#" class="facebook"><i class="icofont icofont-social-facebook"></i></a></li>
+                    <li><a href="#" class="twitter"><i class="icofont icofont-social-twitter"></i></a></li>
+                    <li><a href="#" class="pinterest"><i class="icofont icofont-social-pinterest"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--== Member End ==-->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="team-member">
+              <div class="team-thumb">
+                <div class="thumb-overlay"></div>
+                <img src="assets/images/team/team-2.jpg" alt="">
+                <div class="member-info text-center secondary-bg">
+                  <h3>Sara Adams</h3>
+                  <span class="title">CEO of Becki Agency</span>
+                  <ul class="social-link list-inline">
+                    <li><a href="#" class="facebook"><i class="icofont icofont-social-facebook"></i></a></li>
+                    <li><a href="#" class="twitter"><i class="icofont icofont-social-twitter"></i></a></li>
+                    <li><a href="#" class="pinterest"><i class="icofont icofont-social-pinterest"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--== Member End ==-->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="team-member">
+              <div class="team-thumb">
+                <div class="thumb-overlay"></div>
+                <img src="assets/images/team/team-3.jpg" alt="">
+                <div class="member-info text-center default-bg">
+                  <h3>Enzo William</h3>
+                  <span class="title">Photographer</span>
+                  <ul class="social-link list-inline">
+                    <li><a href="#" class="facebook"><i class="icofont icofont-social-facebook"></i></a></li>
+                    <li><a href="#" class="twitter"><i class="icofont icofont-social-twitter"></i></a></li>
+                    <li><a href="#" class="pinterest"><i class="icofont icofont-social-pinterest"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="team-member">
+              <div class="team-thumb">
+                <div class="thumb-overlay"></div>
+                <img src="assets/images/team/team-1.jpg" alt="">
+                <div class="member-info text-center default-bg">
+                  <h3>Tom Bills</h3>
+                  <span class="title">Web Designer</span>
+                  <ul class="social-link list-inline">
+                    <li><a href="#" class="facebook"><i class="icofont icofont-social-facebook"></i></a></li>
+                    <li><a href="#" class="twitter"><i class="icofont icofont-social-twitter"></i></a></li>
+                    <li><a href="#" class="pinterest"><i class="icofont icofont-social-pinterest"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--== Member End ==-->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="team-member">
+              <div class="team-thumb">
+                <div class="thumb-overlay"></div>
+                <img src="assets/images/team/team-2.jpg" alt="">
+                <div class="member-info text-center secondary-bg">
+                  <h3>Sara Adams</h3>
+                  <span class="title">CEO of Becki Agency</span>
+                  <ul class="social-link list-inline">
+                    <li><a href="#" class="facebook"><i class="icofont icofont-social-facebook"></i></a></li>
+                    <li><a href="#" class="twitter"><i class="icofont icofont-social-twitter"></i></a></li>
+                    <li><a href="#" class="pinterest"><i class="icofont icofont-social-pinterest"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--== Member End ==-->
+          <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="team-member">
+              <div class="team-thumb">
+                <div class="thumb-overlay"></div>
+                <img src="assets/images/team/team-3.jpg" alt="">
+                <div class="member-info text-center default-bg">
+                  <h3 class="raleway-font font-400">Anna Roxx</h3>
+                  <span class="title">Photographer</span>
+                  <ul class="social-link list-inline">
+                    <li><a href="#" class="facebook"><i class="icofont icofont-social-facebook"></i></a></li>
+                    <li><a href="#" class="twitter"><i class="icofont icofont-social-twitter"></i></a></li>
+                    <li><a href="#" class="pinterest"><i class="icofont icofont-social-pinterest"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--== Member End ==-->
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!--== Team End ==-->
+
+  <!--== Contact Start ==-->
+  <section class="white-bg transition-none" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 centerize-col text-center">
+          <div class="section-title">
+            <h2 class="raleway-font default-color">Just Keep In Touch</h2>
+            <h1 class="raleway-font">Contact Us Now</h1>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam semper ex ac velit varius semper. Mauris at dolor nec ante ultricies aliquam ac vitae diam. Quisque sodales vehicula elementum. Phasellus tempus tellus vitae ullamcorper hendrerit.</p>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row mt-50">
+        <div id="map-style-3" class="wide"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row mt-70">
+        <div class="col-md-6 col-sm-6 col-xs-12 xs-mb-50">
+          <div class="row mt-20">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="section-title">
+                <h2 class="raleway-font default-color">Postal Address</h2>
+                <p class="mt-30">PO Box 16122 Toronto Eaton Centre, 220 The PATH Toronto, ON M5B 2H1, Canada</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="section-title">
+                <h2 class="raleway-font default-color">Office Numbers</h2>
+                <p class="mb-0 mt-30">Landline : +44 1234 567 9</p>
+                <p class="mb-0">Mobile : +44 1234 567 9</p>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-20">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="section-title">
+                <h2 class="raleway-font default-color">Our Email</h2>
+                <p class="mb-0 mt-30">Order : order@yourwebsite.com</p>
+                <p class="mb-0">Request : request@yourwebsite.com</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="section-title">
+                <h2 class="raleway-font default-color">Fast Support</h2>
+                <p class="mb-0 mt-30">Support : support@yourwebsite.com</p>
+                <p class="mb-0">Career : career@yourwebsite.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-20">
+              <div class="col-md-12 social-icons-style-01">
+                <ul class="md-icon left-icon">
+                  <li><a class="fb" href="#."><i class="icofont icofont-social-facebook"></i></a></li>
+                  <li><a class="tw" href="#."><i class="icofont icofont-social-twitter"></i></a></li>
+                  <li><a class="be" href="#."><i class="icofont icofont-social-behance"></i></a></li>
+                  <li><a class="in" href="#."><i class="icofont icofont-social-linkedin"></i></a></li>
+                  <li><a class="yt" href="#."><i class="icofont icofont-social-youtube"></i></a></li>
+                  <li><a class="ins" href="#."><i class="icofont icofont-social-instagram"></i></a></li>
+                </ul>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <form name="contact-form" id="contact-form" action="php/contact.php" method="POST" class="contact-form-style-01">
+            <div class="messages"></div>
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label class="sr-only" for="name">Name</label>
+                  <input type="text" name="name" class="md-input" id="name" placeholder="Name *" required data-error="Your Name is Required">
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label class="sr-only" for="email">Email</label>
+                  <input type="email" name="email" class="md-input" id="email" placeholder="Email *" required data-error="Please Enter Valid Email">
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                  <label class="sr-only" for="subject">Subject</label>
+                  <input type="text" name="subject" class="md-input" id="subject" placeholder="Subject">
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <div class="form-group">
+                  <label class="sr-only" for="message">Project Details</label>
+                  <textarea name="message" class="md-textarea" id="message" rows="7" placeholder="Project Details" required data-error="Please, Leave us a message"></textarea>
+                  <div class="help-block with-errors"></div>
+                </div>
+              </div>
+              <div class="col-md-12 col-sm-12">
+
+                  <select name="orderby" class="orderby">
+                    <option value="" selected="selected">$500 - $1000</option>
+                    <option value="">$1000 - $2000</option>
+                    <option value="">$2000 - $5000</option>
+                  </select> <input type="hidden" name="paged" value="1">
+                  <input type="hidden" name="min_price" value="20"><input type="hidden" name="max_price" value="290">
+
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <div class="text-left mt-20">
+                  <button type="submit" name="submit" class="btn btn-outline btn-md btn-square btn-animate remove-margin"><span>Send Message <i class="ion-android-arrow-forward"></i></span></button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--== Contact End ==-->
+
+  <!--== Footer Start ==-->
+  <footer class="footer">
+    <div class="footer-copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-xs-12">
+            <div class="copy-right text-left">© 2018 Becki Creative Agency. All rights reserved</div>
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <ul class="social-media">
+              <li><a href="#" class="icofont icofont-social-facebook"></a></li>
+      			  <li><a href="#" class="icofont icofont-social-twitter"></a></li>
+      			  <li><a href="#" class="icofont icofont-social-behance"></a></li>
+      			  <li><a href="#" class="icofont icofont-social-dribble"></a></li>
+              <li><a href="#" class="icofont icofont-social-linkedin"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--== Footer End ==-->
+
+  <!--== Go to Top  ==-->
+  <a href="javascript:" id="return-to-top"><i class="icofont icofont-arrow-up"></i></a>
+  <!--== Go to Top End ==-->
+
+</div>
+<!--== Wrapper End ==-->
