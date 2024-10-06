@@ -40,6 +40,7 @@ class ModisNRTService {
     static async store(data) {
         try {
             const record = new modisNRT(data);
+            record.brightness_c = record.brightness - 273.15;
             record.save();
             return record;
         } catch(error) {
