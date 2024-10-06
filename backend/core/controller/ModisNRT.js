@@ -1,32 +1,16 @@
 const service = require('../service/ModisNRT');
-const response = require('../handler/JsonResponse');
-const ModisNRTDto = require('../dto/ModisNRT');
+const response = require('../handler/JsonResponse')
 
 class ModisNRTController {
 
     static async list(req, res) {
         try {
-            
             const recordList = await service.list(req.body);
-            const responseList = [];
-            
-            recordList.map(record => {
-                const recordDto = new ModisNRTDto(
-                    record.latitude,
-                    record.longitude,
-                    record.acq_date,
-                    record.acq_time,
-                    record.brightness,
-                    record.brightness_c
-                );
-                responseList.push(recordDto)
-            });
-
             return response.successResponse(
                 res,
                 200,
                 "Success",
-                responseList
+                recordList
             );
 
         } catch(error) {
