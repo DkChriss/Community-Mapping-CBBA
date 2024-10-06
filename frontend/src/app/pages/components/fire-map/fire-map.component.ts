@@ -1,40 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as L from 'leaflet';
 import { Router } from '@angular/router';
-import * as echarts from 'echarts';
 import { HttpClient } from '@angular/common/http';
+import { FireMapService } from '../../shared/services/fire-map.service';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { Daum, FireMapDate, Root } from '../../../interfaces/fire-map.interface'; // Asegúrate de que esta es la interfaz correcta
 
 @Component({
   selector: 'app-fire-map',
   templateUrl: './fire-map.component.html',
   styleUrls: ['./fire-map.component.css']
 })
-export class FireMapComponent implements OnInit {
+export class FireMapComponent implements OnInit, OnDestroy {
 
+  
+  loading: boolean = false; 
+  lg!: FormGroup;
   private map: L.Map | undefined;
 
-  private markerData = [
-    { lat: -17.38218419453465, lng: -66.15171157880397, brightness: 230, dateTime: '2024-10-05 14:30' },
-    { lat: -17.4, lng: -66.2, brightness: 250, dateTime: '2024-10-05 15:45' },
-    { lat: -14.1, lng: -64.9, brightness: 309, dateTime: '2024-10-05 16:20' },
-    { lat: -19.0, lng: -65.2, brightness: 450, dateTime: '2024-10-05 17:00' },
-    { lat: -21.1, lng: -63.5, brightness: 500, dateTime: '2024-10-05 18:30' }
-  ];
-
-  constructor(private http: HttpClient) { }
+  constructor(private fireMapService: FireMapService, 
+              private fb: FormBuilder, 
+              private router: Router,
+              private http: HttpClient) {
+    this.lg = this.fb.group({
+      dateInit: new FormControl('', [Validators.required]),
+      dateEnd: new FormControl('', [Validators.required])
+    });
+  }
 
   ngOnInit() {
-    // Inicializa el mapa centrado en Bolivia
     this.map = L.map('map').setView([-16.290154, -63.588653], 6);
-
-    // Cambiar a Tracestack Topo
     L.tileLayer('https://tile.thunderforest.com/landscape/{z}/{x}/{y}.png?apikey=d38a47705d6e4a5b98761d37eb661fe5', {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.thunderforest.com/">Thunderforest</a> &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(this.map);
 
     this.loadGeoJson();
-    this.addMarkers();
+
+    this.loading = true;
+    setTimeout(() => {
+      this.loading = false;
+    }, 3000);
   }
 
   private loadGeoJson() {
@@ -52,73 +58,59 @@ export class FireMapComponent implements OnInit {
     });
   }
 
-  private normalizeBrightness(brightness: number): number {
-    const minBrightness = 200;
-    const maxBrightness = 600;
-    return ((brightness - minBrightness) / (maxBrightness - minBrightness)) * 1000;
+  submitForm() {
+    if (this.lg.valid) {
+      const startDate = new Date(this.lg.value.dateInit);
+      const endDate = new Date(this.lg.value.dateEnd);
+
+      if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+        console.error('Las fechas son inválidas');
+        return;
+      }
+
+      const formattedStartDate = this.formatDate(startDate);
+      const formattedEndDate = this.formatDate(endDate);
+
+      this.fireMapService.getLocationsByDate(formattedStartDate, formattedEndDate).subscribe(
+        (response: Root) => {
+          this.handleApiResponse(response);
+        },
+        error => {
+          console.error('Error al obtener datos del servicio:', error);
+        }
+      );
+    }
   }
 
-  // Calcula los kilómetros afectados basados en el brillo
-  private calculateAffectedKm(brightness: number): number {
-    const baseArea = 0.1; // Ajusta esta base a un valor más pequeño
-    return baseArea * Math.pow(brightness, 0.5); // Relación cuadrática
-}
+  private formatDate(date: Date): string {
+    if (!(date instanceof Date) || isNaN(date.getTime())) {
+      throw new Error('Fecha inválida');
+    }
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
 
-private addMarkers() {
-  if (this.map) {
-    this.markerData.forEach(data => {
-      const customIcon = L.divIcon({
-        className: 'custom-icon',
-        html: `
-          <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-            width="1.2rem" height="1.2rem" viewBox="0 0 533.333 533.333" 
-            style="enable-background:new 0 0 533.333 533.333;" xml:space="preserve">
-            <defs>
-              <linearGradient id="grad1" x1="0%" y1="100%" x2="0%" y2="0%">
-                <stop offset="0%" style="stop-color:rgba(131,20,3,1); stop-opacity:1" />
-                <stop offset="100%" style="stop-color:rgba(247,210,106,1); stop-opacity:1" />
-              </linearGradient>
-            </defs>
-            <g>
-              <path fill="url(#grad1)" d="M165.494,533.333c-35.545-73.962-16.616-116.343,10.703-156.272
-                c29.917-43.728,37.627-87.013,37.627-87.013s23.518,30.573,14.11,78.39c41.548-46.25,49.389-119.938,43.115-148.159
-                c93.914,65.63,134.051,207.737,79.96,313.054c287.695-162.776,71.562-406.339,33.934-433.775
-                c12.543,27.435,14.922,73.88-10.416,96.42C331.635,33.333,225.583,0,225.583,0c12.543,83.877-45.466,175.596-101.404,244.13
-                c-1.965-33.446-4.053-56.525-21.641-88.531C98.59,216.357,52.157,265.884,39.583,326.76C22.551,409.2,52.341,469.562,165.494,533.333z"/>
-            </g>
-          </svg>`,
-        iconSize: [5, 5],
-        iconAnchor: [2, 2]
+  private handleApiResponse(response: Root) {
+    const markerData = response.data; // Asegúrate de que la respuesta tiene el formato esperado
+    this.addMarkers(markerData);
+  }
+
+  private addMarkers(markerData: Daum[]) {
+    if (this.map) {
+      markerData.forEach(data => {
+        const marker = L.marker([parseFloat(data.latitude), parseFloat(data.longitude)]).addTo(this.map!);
+        marker.bindPopup(`<b>Fecha:</b> ${data.date}<br><b>Brillo:</b> ${data.brightness}<br>`).openPopup();
       });
-
-      const normalizedBrightness = this.normalizeBrightness(data.brightness);
-      const affectedKm = this.calculateAffectedKm(normalizedBrightness);
-
-      // Crear el marcador
-      const marker = L.marker([data.lat, data.lng], { icon: customIcon }).addTo(this.map!);
-
-      // Crear la zona sombreada alrededor del marcador
-      const circle = L.circle([data.lat, data.lng], {
-        color: 'red',
-        weight: 1,
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: affectedKm * 1000 // Asegúrate que el valor de 'affectedKm' sea razonable
-      }).addTo(this.map!);
-
-      // Agregar un popup que muestra la distancia afectada
-      marker.bindPopup(`<b>Fecha y Hora:</b> ${data.dateTime}<br><b>Brillo:</b> ${data.brightness}<br><b>Kilómetros afectados:</b> ${affectedKm.toFixed(2)} km`).openPopup();
-    });
-  } else {
-    console.error('El mapa no está inicializado');
+    } else {
+      console.error('El mapa no está inicializado');
+    }
   }
-}
 
   ngOnDestroy() {
     if (this.map) {
       this.map.remove();
     }
   }
-
-  
 }

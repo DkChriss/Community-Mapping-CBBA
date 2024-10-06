@@ -5,12 +5,24 @@ import { ComponentsModule } from './components/components.module';
 import { PagesRoutingModule } from './pages.routing.module';
 import { SharedModule } from "./shared/shared.module";
 
+
 @NgModule({
   imports: [
-    CommonModule, ComponentsModule,
+    CommonModule,
     PagesRoutingModule,
-    SharedModule
-],
-  declarations: [PagesComponent]
-})
+    SharedModule,
+    ComponentsModule
+
+  ],
+  declarations: [PagesComponent,
+    
+  ],
+  exports:[
+    PagesComponent, 
+    SharedModule,
+    
+  ]
+}
+
+)
 export class PagesModule { }
