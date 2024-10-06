@@ -31,9 +31,30 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/leaflet/dist/leaflet.css"
+              "node_modules/leaflet/dist/leaflet.css",
+              "src/assets/css/master.css",
+              "src/assets/css/responsive.css",
+              "src/revolution/css/settings.css",
+              "src/revolution/css/layers.css",
+              "src/revolution/css/navigation.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/smoothscroll.js",
+              "src/assets/js/plugins.js",
+              "src/assets/js/master.js",
+              "src/revolution/js/jquery.themepunch.tools.min.js",
+              "src/revolution/js/jquery.themepunch.revolution.min.js",
+              "src/revolution/js/revolution.extension.actions.min.js",
+              "src/revolution/js/revolution.extension.carousel.min.js",
+              "src/revolution/js/revolution.extension.kenburn.min.js",
+              "src/revolution/js/revolution.extension.layeranimation.min.js",
+              "src/revolution/js/revolution.extension.migration.min.js",
+              "src/revolution/js/revolution.extension.navigation.min.js",
+              "src/revolution/js/revolution.extension.parallax.min.js",
+              "src/revolution/js/revolution.extension.slideanims.min.js",
+              "src/revolution/js/revolution.extension.video.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -101,5 +122,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
