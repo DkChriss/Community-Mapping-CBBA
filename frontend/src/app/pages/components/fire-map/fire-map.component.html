@@ -1,8 +1,3 @@
-<div class="p-5 text-center">
-  <h2>prueba de mapa</h2>
-</div>
-
-
 <form  [formGroup]="lg" class="row col-12 d-flex flex-wrap align-items-center justify-content-center p-0">
   <div class="col-12 col-sm-10 col-lg-6 pb-2 d-flex flex-wrap justify-content-center p-1">
      <div class="col-11 col-sm-10 col-lg-7">
@@ -12,7 +7,7 @@
       <!-- <p-calendar [(ngModel)]="date"></p-calendar> -->
      </div>
   </div>
- 
+
   <div class="col-12 col-sm-10 col-lg-6 pb-2 d-flex flex-wrap justify-content-center p-1">
      <div class="col-11 col-sm-10 col-lg-7">
       <label>Fecha de Fin <small class="p-error block">✽</small></label>
@@ -25,13 +20,13 @@
   <div class="col-6 col-sm-4 d-flex flex-column gap-2 modiSubmit pb1">
     <p-button label="BUSCAR" [loading]="loading" [disabled]="lg.invalid || loading"  (onClick)="submitForm()" [style]="{width: '100%', borderRadius: '6px', backgroundColor: '#f9b154', borderColor: '#f9b154'}" ></p-button>
   </div>
- 
+
  </form>
 
 <div class="p-3"></div>
 
 <div class="container-fluid">
-  <div id="map" style="height: 500px; width: 100%;"></div>
+  <div id="map-street" style="height: 500px; width: 100%;"></div>
 </div>
 
 <!-- <div class="container-fluid">

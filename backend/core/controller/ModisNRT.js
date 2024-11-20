@@ -7,7 +7,8 @@ class ModisNRTController {
     static async list(req, res) {
         try {
             
-            const recordList = await service.list(req.body);
+            const recordList = await service.list(req.query);
+
             const responseList = [];
             
             recordList.map(record => {

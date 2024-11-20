@@ -1,13 +1,14 @@
 const express = require('express');
 const morgan = require('morgan');
 const service = require('../backend/core/service/ModisNRT');
-
+const cors = require('cors');
 const db = require('./config/mongoConfig')
 const app = express();
 
 //ROUTER
 const router = require("./routes/index")
 
+app.use(cors())
 //Config
 app.set('port', process.env.PORT || 3000);
 app.set('json spaces', 2)
